@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AngedaPro Front-End</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" 
+			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			crossorigin="anonymous">
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<header>
+			<h1>Galería de imágenes AgendaPro</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet urna at risus suscipit, in blandit nisl efficitur. Pellentesque mi sem, elementum a ex vel, tincidunt luctus nisi. Nulla posuere ipsum ut vulputate malesuada. Nam quis leo sit amet mauris ultrices hendrerit. Vestibulum at nulla dolor. Integer id aliquam nibh. Nullam sed fermentum ante, non ornare est.</p>
+		</header>
+		<section class="images_content">
+			<div class="content_item">
+				<div class="item cir" data-url="img/img1.jpg" data-title="Nueva Zelanda 1">
+					<div class="background cir"></div>
+				</div>
+			</div>
+			<div class="content_item">
+				<div class="item rec" data-url="img/img2.jpg" data-title="Nueva Zelanda 2">
+					<div class="background rec"></div>
+				</div>
+			</div>
+			<div class="content_item">
+				<div class="item cua" data-url="img/img3.jpg" data-title="Nueva Zelanda 3">
+					<div class="background cua"></div>
+				</div>
+			</div>
+			<div class="content_item tri">
+				<div class="item tri" data-url="img/img4.jpg" data-title="Nueva Zelanda 4">
+					<div class="background tri"></div>
+				</div>
+			</div>
+		</section>
+		<div class="modal_box">
+			<button class="close"></button>
+			<h2 class="titulo"></h2>
+			<img src="" alt="">
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(e){
+			$(document).on("click", ".item", function(e){
+				var data_url = $(this).attr("data-url");
+				var data_title = $(this).attr("data-title");
+				$(".titulo").html(data_title);
+				$(".modal_box img").attr("src",data_url);
+				$(".modal_box").fadeIn("slow");
+				window.location.hash = "#open";
+			})
+			$(document).on("click", ".close", function(e){
+				$(".modal_box").hide("slow");
+			})
+			window.onhashchange = function() {
+				if(window.location.hash != "#open"){
+					$(".modal_box").hide("slow");
+				}
+			}
+		})
+	</script>
+</body>
+</html>
